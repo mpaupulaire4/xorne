@@ -1,0 +1,114 @@
+/*
+ * Copyright (c) 2020 The ZMK Contributors
+ *
+ * SPDX-License-Identifier: MIT
+ */
+
+#include <behaviors.dtsi>
+#include <dt-bindings/zmk/keys.h>
+#include <dt-bindings/zmk/bt.h>
+#include <dt-bindings/zmk/outputs.h>
+
+#define DFLT  0
+// #define QWER  1
+// #define LWR   2
+// #define RSE   3
+// #define ADJ   4
+// #define EXT   5
+#define LWR   1
+#define RSE   2
+#define ADJ   3
+#define EXT   4
+
+&mt {
+  retro-tap;
+};
+
+/ {
+  behaviors {
+    cml: ctrl_morph_left {
+        compatible = "zmk,behavior-mod-morph";
+        label = "CTRL_MORPH_LEFT";
+        #binding-cells = <0>;
+        bindings = <&kp MINUS>, <&mt LSHFT LBKT>;
+        mods = <(MOD_LCTL|MOD_RCTL)>;
+    };
+    cmr: ctrl_morph_right {
+        compatible = "zmk,behavior-mod-morph";
+        label = "CTRL_MORPH_RIGHT";
+        #binding-cells = <0>;
+        bindings = <&kp SQT>, <&mt RSHFT RBKT>;
+        mods = <(MOD_LCTL|MOD_RCTL)>;
+    };
+    spcun: space_underscore {
+        compatible = "zmk,behavior-mod-morph";
+        label = "SPACE_UNDERSCORE";
+        #binding-cells = <0>;
+        bindings = <&kp SPACE>, <&kp UNDER>;
+        mods = <(MOD_LSFT|MOD_RSFT)>;
+    };
+  };
+
+
+  keymap {
+    compatible = "zmk,keymap";
+
+    default_layer {
+      bindings = <
+// -----------------------------------------------------------------------------------------
+// |  ESC  |  Q  |  W  |  F  |  P  |  B  |       |  J  |  L   |  I  |  Y  |  ;  | BKSP |
+// | MINUS |  A  |  R  |  S  |  T  |  G  |       |  M  |  N   |  E  |  I  |  O  |  '   |
+// |  TAB  |  Z  |  X  |  C  |  D  |  V  |       |  K  |  H   |  ,  |  .  |  /  | RET  |
+//                    | EXTR | LWR | SFT |       | SPC | RSE  | GUI |
+    &kp ESC    &kp Q    &kp W     &kp F     &kp P    &kp B            &kp J     &kp L    &kp U     &kp Y    &kp SEMI   &kp BSPC
+    &cml       &kp A    &kp R     &kp S     &kp T    &kp G            &kp M     &kp N    &kp E     &kp I    &kp O      &cmr
+    &kp TAB    &kp Z    &kp X     &kp C     &kp D    &kp V            &kp K     &kp H    &kp COMMA &kp DOT  &kp FSLH   &kp RET
+                                  &kp LCTRL &mo LWR  &kp LSHFT        &kp SPACE &mo RSE  &kp LGUI
+      >;
+    };
+
+//    qwert_layer {
+//      bindings = <
+//    &trans    &kp Q    &kp W     &kp E     &kp R    &kp T            &kp Y     &kp U    &kp I     &kp O    &kp SEMI   &trans
+//    &trans    &kp A    &kp S     &kp D     &kp F    &kp G            &kp H     &kp J    &kp K     &kp L    &kp P      &trans
+//    &trans    &kp Z    &kp X     &kp C     &kp V    &kp B            &kp N     &kp M    &kp COMMA &kp DOT  &kp FSLH   &trans
+//                                 &trans    &trans   &trans           &trans    &trans   &trans
+//      >;
+//    };
+
+    lower_layer {
+// -----------------------------------------------------------------------------------------
+// |  ~  |     |  (  |  )  |  &  |  |  |        |     |  7  |  8  |  9  |     | DEL |
+// |  ^  |  !  |  @  |  #  |  $  |  %  |        |  +  |  4  |  5  |  6  |  -  |  `  |
+// | CTL |     |  [  |  ]  |  {  |  }  |        |  *  |  1  |  2  |  3  |  \  |  =  |
+//                   | --- |     | --- |        |  0  |     | --- |
+      bindings = <
+    &kp TILDE  &none     &kp LPAR &kp RPAR &kp AMPS &kp PIPE         &none     &kp N7    &kp N8   &kp N9    &none      &kp DEL
+    &kp CARET  &kp EXCL  &kp AT   &kp HASH &kp DLLR &kp PRCNT        &kp PLUS  &kp N4    &kp N5   &kp N6    &kp MINUS  &kp GRAVE
+    &kp LCTRL  &none     &kp LBKT &kp RBKT &kp LBRC &kp RBRC         &kp STAR  &kp N1    &kp N2   &kp N3    &kp BSLH   &kp EQUAL
+                                  &mo ADJ  &trans   &trans           &kp N0    &trans    &trans
+      >;
+    };
+
+    raise_layer {
+      bindings = <
+    &trans   &none   &none    &none     &none      &none             &kp PG_UP   &kp HOME  &kp UP    &kp END   &none   &kp DEL
+    &trans   &none   &kp LGUI &kp LALT  &kp LCTRL  &none             &kp PG_DN   &kp LEFT  &kp DOWN  &kp RIGHT &none   &none
+    &trans   &none   &none    &none     &none      &none             &none       &none     &none     &none     &none   &none
+                              &none     &trans     &kp LSHFT         &trans      &trans  &trans
+      >;
+    };
+
+    adjust_layer {
+      bindings = <
+    &kp F1 &kp F2   &kp F3    &kp F4   &kp F5   &kp F6          &none        &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &none        &bt BT_CLR
+    &kp F7 &kp F8   &kp F9    &kp F10  &kp F11  &kp F12         &out OUT_USB &none        &none        &none        &none        &none
+    &none  &none    &none     &none    &none    &none           &out OUT_BLE &none        &none        &none        &none        &none
+                              &none    &trans   &none           &none        &trans       &none
+      >;
+    };
+
+  };
+};
+
+

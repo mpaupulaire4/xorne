@@ -1,0 +1,11 @@
+# Copyright (c) 2020 The ZMK Contributors
+# SPDX-License-Identifier: MIT
+
+config SHIELD_XORNE_LEFT
+	def_bool $(shields_list_contains,xorne_left)
+
+config SHIELD_XORNE_RIGHT
+	def_bool $(shields_list_contains,xorne_right)
+
+config SHIELD_XORNE_DONGLE
+	def_bool $(shields_list_contains,xorne_dongle)

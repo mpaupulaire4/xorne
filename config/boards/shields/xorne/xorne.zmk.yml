@@ -1,0 +1,13 @@
+file_format: "1"
+id: corned
+name: The Corne Dongled
+type: shield
+url: https://github.com/mpaupulaire4/zmk-corne-dongle
+requires: [pro_micro]
+exposes: [i2c_oled]
+features:
+  - keys
+siblings:
+  - corned_left
+  - corned_right
+  - corned_dongle
