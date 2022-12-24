@@ -49,7 +49,16 @@
         }
       },
       "diff_pair_dimensions": [],
-      "drc_exclusions": [],
+      "drc_exclusions": [
+        "copper_edge_clearance|79000000|86750000|fc789868-dfed-4f13-8251-ba1d7c77cc59|1cad19b7-0e2d-44e2-b511-57f80ee06738",
+        "copper_edge_clearance|80000000|105500000|149ad517-17fd-468f-8bcb-9d005ca3a3b4|40c41657-d5b8-4dd5-881a-a7fe47976b73",
+        "courtyards_overlap|100500001|104365832|00000000-0000-0000-0000-00005a91ae9b|00000000-0000-0000-0000-00005aaa7c1c",
+        "courtyards_overlap|100500001|85365832|00000000-0000-0000-0000-00005a91ade7|00000000-0000-0000-0000-00005aaa7c08",
+        "courtyards_overlap|153493578|84375001|00000000-0000-0000-0000-00005a91ae23|00000000-0000-0000-0000-00005aaa7c39",
+        "courtyards_overlap|157592212|81749999|00000000-0000-0000-0000-00005a91ad8d|00000000-0000-0000-0000-00005aaa7c39",
+        "silk_over_copper|100650000|105750000|b890dd1f-1fc1-4d64-aabb-3d892def5e62|89a716bf-88a5-48ed-8275-a0937323be40",
+        "silk_over_copper|100650000|86750000|62f28c57-522c-4c8a-ade1-e8f4922ed9d1|7a32dc3c-57e1-4c6c-ae66-a2531e6111d4"
+      ],
       "meta": {
         "filename": "board_design_settings.json",
         "version": 2
