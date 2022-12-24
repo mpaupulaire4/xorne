@@ -1,13 +1,12 @@
 file_format: "1"
-id: corned
-name: The Corne Dongled
+id: xorne
+name: Corne Xiao
 type: shield
-url: https://github.com/mpaupulaire4/zmk-corne-dongle
-requires: [pro_micro]
-exposes: [i2c_oled]
+url: https://github.com/mpaupulaire4/xorne
+requires: [seeed_xiao]
 features:
   - keys
 siblings:
-  - corned_left
-  - corned_right
-  - corned_dongle
+  - xorne_left
+  - xorne_right
+  - xorne_dongle
